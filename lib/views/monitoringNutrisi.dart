@@ -13,7 +13,7 @@ class MonitoringNutrisi extends StatefulWidget {
 
 class _MonitoringNutrisiState extends State<MonitoringNutrisi> {
   Color warna = const Color.fromRGBO(46, 204, 113, 1);
-  String? tinggi_air;
+  String? tinggi_nutrisi;
   double presentase = 0.8;
   int? status_penyiraman;
   int? totalSiram;
@@ -26,8 +26,8 @@ class _MonitoringNutrisiState extends State<MonitoringNutrisi> {
     print(dateFormat);
   }
 
-  getDataSiram() async {
-    var data = await Services.getDataSiram();
+  getDataSiramNutrisi() async {
+    var data = await Services.getDataSiramNutrisi();
     totalSiram = int.parse(data['totalSiram']);
     if (totalSiram == 0) {
       value = 0;
@@ -42,18 +42,18 @@ class _MonitoringNutrisiState extends State<MonitoringNutrisi> {
     setState(() {});
   }
 
-  getStatusPenyiraman() async {
-    var data = await Services.getStatusPenyiraman();
+  getStatusPenyiramanNutrisi() async {
+    var data = await Services.getStatusPenyiramanNutrisi();
     status_penyiraman = int.parse(data['kondisi']);
     print(status_penyiraman);
     setState(() {});
   }
 
-  getDataAir() async {
-    var response = await Services.getDataAir();
-    tinggi_air = response['tinggi_air'];
+  getDataNutrisi() async {
+    var response = await Services.getDataNutrisi();
+    tinggi_nutrisi = response['tinggi_nutrisi'];
     presentase = double.parse(response['persentase']);
-    print(tinggi_air);
+    print(tinggi_nutrisi);
     print(presentase);
     loading = false;
     setState(() {});
@@ -64,9 +64,9 @@ class _MonitoringNutrisiState extends State<MonitoringNutrisi> {
   @override
   void initState() {
     getTime();
-    getDataSiram();
-    getDataAir();
-    getStatusPenyiraman();
+    getDataSiramNutrisi();
+    getDataNutrisi();
+    getStatusPenyiramanNutrisi();
     super.initState();
   }
 
@@ -313,12 +313,12 @@ class _MonitoringNutrisiState extends State<MonitoringNutrisi> {
                                   Center(
                                       child: Padding(
                                     padding: EdgeInsets.only(top: 80),
-                                    child: Text('${tinggi_air!} cm',
+                                    child: Text('${tinggi_nutrisi!} cm',
                                         style: const TextStyle(fontSize: 38)),
                                   ))
                                 ]),
                                 const Text(
-                                  'Tinggi Air',
+                                  'Tinggi Nutrisi',
                                   style: TextStyle(fontSize: 20),
                                 )
                               ]),
