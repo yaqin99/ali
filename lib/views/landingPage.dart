@@ -16,7 +16,7 @@ class _LandingPageState extends State<LandingPage> {
   _navigate() async {
     await Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return MonitoringPage();
+        return MonitoringAir();
       }));
     });
   }

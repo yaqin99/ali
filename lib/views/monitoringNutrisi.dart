@@ -1,17 +1,17 @@
-import 'package:ali/views/monitoringNutrisi.dart';
+import 'package:ali/views/monitoringPage.dart';
 import 'package:ali/views/service.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
-class MonitoringAir extends StatefulWidget {
-  const MonitoringAir({Key? key}) : super(key: key);
+class MonitoringNutrisi extends StatefulWidget {
+  const MonitoringNutrisi({Key? key}) : super(key: key);
 
   @override
-  State<MonitoringAir> createState() => _MonitoringAirState();
+  State<MonitoringNutrisi> createState() => _MonitoringNutrisiState();
 }
 
-class _MonitoringAirState extends State<MonitoringAir> {
+class _MonitoringNutrisiState extends State<MonitoringNutrisi> {
   Color warna = const Color.fromRGBO(46, 204, 113, 1);
   String? tinggi_air;
   double presentase = 0.8;
@@ -115,7 +115,7 @@ class _MonitoringAirState extends State<MonitoringAir> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: const [
                                 Text(
-                                  'Monitoring Air',
+                                  'Monitoring Nutrisi',
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 20),
@@ -277,7 +277,7 @@ class _MonitoringAirState extends State<MonitoringAir> {
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          'Ketinggian Air',
+                          'Ketinggian Nutrisi',
                           style: TextStyle(fontSize: 20),
                         ),
                       ),
@@ -343,35 +343,36 @@ class _MonitoringAirState extends State<MonitoringAir> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Stack(children: [
-                            Center(
-                              child: Container(
-                                  height: 60,
-                                  width: 60,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(100)),
-                                  child: Center(
-                                      child: FaIcon(
-                                    FontAwesomeIcons.droplet,
-                                    size: 35,
-                                    color: warna,
-                                  ))),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushReplacement(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return MonitoringAir();
+                                }));
+                              },
+                              child: Center(
+                                child: Container(
+                                    height: 60,
+                                    width: 60,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                            BorderRadius.circular(100)),
+                                    child: Center(
+                                        child: FaIcon(
+                                      FontAwesomeIcons.droplet,
+                                      size: 35,
+                                      color: warna,
+                                    ))),
+                              ),
                             ),
                           ]),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.pushReplacement(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return MonitoringNutrisi();
-                              }));
-                            },
-                            child: Center(
-                                child: Image.asset(
-                              'assets/nutrisi1.png',
-                              width: 80,
-                              height: 80,
-                            )),
-                          )
+                          Center(
+                              child: Image.asset(
+                            'assets/nutrisi1.png',
+                            width: 80,
+                            height: 80,
+                          ))
                         ],
                       ),
                     ),
