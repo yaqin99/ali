@@ -14,7 +14,7 @@ class _LandingPageState extends State<LandingPage> {
   Color warna = Color.fromRGBO(46, 204, 113, 1);
 
   _navigate() async {
-    await Future.delayed(const Duration(seconds: 2), () {
+    await Future.delayed(const Duration(seconds: 300), () {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
         return MonitoringAir();
       }));
@@ -32,28 +32,29 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
+        child: SizedBox(
           width: MediaQuery.of(context).size.width * 0.9,
           height: MediaQuery.of(context).size.height * 1,
           // decoration: BoxDecoration(border: Border.all(color: Colors.black)),
           child: Column(
             children: [
-              Container(
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.2,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Kampong Melon Napote',
+                      'Kampung Melon Napote',
                       style: TextStyle(
                           color: warna,
                           fontWeight: FontWeight.w700,
                           fontSize: 30),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 10),
+                      margin: const EdgeInsets.only(top: 10),
                       width: MediaQuery.of(context).size.width * 0.8,
-                      child: Text(
+                      child: const Text(
                         'Sistem Monitoring dan Penyiraman Otomatis Tanaman Melon',
                         textAlign: TextAlign.center,
                         maxLines: 2,
@@ -64,31 +65,50 @@ class _LandingPageState extends State<LandingPage> {
                     )
                   ],
                 ),
-                height: MediaQuery.of(context).size.height * 0.2,
                 // decoration:
                 //     BoxDecoration(border: Border.all(color: Colors.black)),
               ),
               Container(
-                height: MediaQuery.of(context).size.height * 0.6,
+                height: MediaQuery.of(context).size.height * 0.5,
                 // decoration:
                 //     BoxDecoration(border: Border.all(color: Colors.black)),
-                child: Center(
-                  child: Image.asset(
-                    'assets/siram.png',
-                    width: MediaQuery.of(context).size.width * 0.7,
-                    height: MediaQuery.of(context).size.height * 0.7,
-                  ),
+                child: ListView(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(top: 80),
+                      child: Image.asset(
+                        'assets/siram.png',
+                        width: MediaQuery.of(context).size.width * 0.25,
+                        height: MediaQuery.of(context).size.height * 0.25,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Container(
-                height: MediaQuery.of(context).size.height * 0.1975,
+                margin: const EdgeInsets.only(top: 10),
+                height: MediaQuery.of(context).size.height * 0.1,
+                // decoration:
+                //     BoxDecoration(border: Border.all(color: Colors.black)),
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      'assets/logo1.png',
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      height: MediaQuery.of(context).size.height * 0.6,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height * 0.15,
                 // decoration:
                 //     BoxDecoration(border: Border.all(color: Colors.red)),
                 child: Center(
                     child: Stack(
                   children: [
                     Positioned(
-                      top: 30,
+                      top: 10,
                       left: 63,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -110,7 +130,7 @@ class _LandingPageState extends State<LandingPage> {
                       ),
                     ),
                     Positioned(
-                      bottom: 50,
+                      bottom: 30,
                       left: 143,
                       child: Text(
                         '<PRO.JS/>',
